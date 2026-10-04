@@ -1,50 +1,73 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 export default function TechStack() {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const technologies = [
-    { name: "React Native", slug: "react" },
-    { name: "Expo", slug: "expo" },
-    { name: "TypeScript", slug: "typescript" },
-    { name: "Node.js", slug: "nodedotjs" },
-    { name: "Android", slug: "android" },
-    { name: "Apple", slug: "apple" },
-    { name: "Linux", slug: "linux" },
-    { name: "Vercel", slug: "vercel" },
-    { name: "GitHub", slug: "github" },
-    { name: "JavaScript", slug: "javascript" },
+    { name: "React Native", slug: "react", color: "#61dafb" },
+    { name: "Expo", slug: "expo", color: "#000020" },
+    { name: "TypeScript", slug: "typescript", color: "#3178c6" },
+    { name: "Node.js", slug: "nodedotjs", color: "#339933" },
+    { name: "Android", slug: "android", color: "#3ddc84" },
+    { name: "Apple", slug: "apple", color: "#999999" },
+    { name: "Linux", slug: "linux", color: "#fcc624" },
+    { name: "Vercel", slug: "vercel", color: "#000000" },
+    { name: "GitHub", slug: "github", color: "#181717" },
+    { name: "JavaScript", slug: "javascript", color: "#f7df1e" },
   ];
 
   return (
-    <section id="tech-stack" className="section-padding">
+    <section id="tech-stack" ref={ref} className="section-padding relative">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+
       <div className="container">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+        <div className="text-center mb-20">
+          <h2 className={`text-4xl md:text-6xl font-bold tracking-tight mb-6 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <span className="text-white">Built on</span>{" "}
             <span className="text-gradient">proven technology</span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-            Dev-Ashy leverages the best open-source technologies to deliver a
-            premium development experience.
+          <p className={`text-slate-400 max-w-2xl mx-auto text-lg transition-all duration-1000 delay-200 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            Dev-Ashy leverages the best open-source technologies to deliver a premium development experience.
           </p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-6">
-          {technologies.map((tech) => (
+          {technologies.map((tech, index) => (
             <a
               key={tech.slug}
               href={`https://simpleicons.org/?q=${tech.slug}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="card px-6 py-4 flex items-center gap-3 group"
+              className={`card px-8 py-6 flex items-center gap-4 group transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="w-8 h-8 flex items-center justify-center text-slate-400 group-hover:text-white transition-colors">
-                <svg
-                  className="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                </svg>
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                style={{ backgroundColor: tech.color + "20" }}
+              >
+                <div className="w-5 h-5 rounded" style={{ backgroundColor: tech.color }} />
               </div>
-              <span className="text-sm font-medium text-slate-400 group-hover:text-white transition-colors">
+              <span className="text-base font-medium text-slate-400 group-hover:text-white transition-colors">
                 {tech.name}
               </span>
             </a>

@@ -1,4 +1,28 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 export default function Templates() {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const templates = [
     {
       name: "Starter",
@@ -39,34 +63,51 @@ export default function Templates() {
   ];
 
   return (
-    <section id="templates" className="section-padding bg-[#0d0d14]">
-      <div className="container">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+    <section id="templates" ref={ref} className="section-padding bg-[#08080f] relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
+
+      <div className="container relative z-10">
+        <div className="text-center mb-20">
+          <h2 className={`text-4xl md:text-6xl font-bold tracking-tight mb-6 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <span className="text-white">Start with a</span>{" "}
             <span className="text-gradient">template</span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-            Production-ready templates to jumpstart your project. Fully
-            customizable and MIT licensed.
+          <p className={`text-slate-400 max-w-2xl mx-auto text-lg transition-all duration-1000 delay-200 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            Production-ready templates to jumpstart your project. Fully customizable and MIT licensed.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {templates.map((template) => (
-            <div key={template.name} className="card p-6 group">
-              <div
-                className={`w-full h-32 rounded-xl bg-gradient-to-br ${template.gradient} mb-4 opacity-80 group-hover:opacity-100 transition-opacity`}
-              />
-              <h3 className="text-lg font-bold mb-2">{template.name}</h3>
-              <p className="text-sm text-slate-400 mb-4">
-                {template.description}
-              </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {templates.map((template, index) => (
+            <div
+              key={template.name}
+              className={`card p-8 group transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
+              {/* Template preview */}
+              <div className={`w-full h-40 rounded-2xl bg-gradient-to-br ${template.gradient} mb-6 relative overflow-hidden`}>
+                <div className="absolute inset-0 bg-black/20" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-6xl font-bold text-white/30">{template.name[0]}</div>
+                </div>
+                {/* Fake UI elements */}
+                <div className="absolute top-4 left-4 right-4">
+                  <div className="h-2 bg-white/20 rounded-full w-1/3 mb-2" />
+                  <div className="h-2 bg-white/10 rounded-full w-1/2" />
+                </div>
+                <div className="absolute bottom-4 left-4 right-4 flex gap-2">
+                  <div className="h-6 bg-white/20 rounded-lg flex-1" />
+                  <div className="h-6 bg-white/20 rounded-lg flex-1" />
+                </div>
+              </div>
+
+              <h3 className="text-xl font-bold mb-3">{template.name}</h3>
+              <p className="text-sm text-slate-400 mb-6">{template.description}</p>
               <div className="flex flex-wrap gap-2">
                 {template.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-2 py-1 rounded-full bg-[#1a1a25] text-slate-400"
+                    className="text-xs px-3 py-1.5 rounded-full bg-[#12121e] text-slate-400 border border-[#1e293b]"
                   >
                     {tag}
                   </span>

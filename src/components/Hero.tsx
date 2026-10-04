@@ -1,91 +1,117 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 export default function Hero() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const particles = Array.from({ length: 30 }, (_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    delay: Math.random() * 10,
+    duration: 10 + Math.random() * 20,
+    size: 2 + Math.random() * 4,
+    opacity: 0.2 + Math.random() * 0.5,
+  }));
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-pulse-glow" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-glow" />
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
+      {/* Animated background */}
+      <div className="absolute inset-0 animated-bg" />
+
+      {/* Gradient orbs */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-[120px] animate-pulse-glow" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-cyan-500/15 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[150px] animate-pulse-glow" style={{ animationDelay: "3s" }} />
+
+      {/* Grid overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
+
+      {/* Particles */}
+      <div className="particles">
+        {particles.map((p) => (
+          <div
+            key={p.id}
+            className="particle"
+            style={{
+              left: `${p.left}%`,
+              animationDelay: `${p.delay}s`,
+              animationDuration: `${p.duration}s`,
+              width: `${p.size}px`,
+              height: `${p.size}px`,
+              opacity: p.opacity,
+            }}
+          />
+        ))}
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <div className="badge mb-6">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          Now in Development
+      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+        <div className={`transition-all duration-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <div className="badge mb-8">
+            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            Now in Development
+          </div>
         </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6">
-          <span className="text-gradient">Build Beyond</span>
+        <h1 className={`text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 transition-all duration-1000 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <span className="text-gradient glow-text">Build Beyond</span>
           <br />
           <span className="text-white">the Screen.</span>
         </h1>
 
-        <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className={`text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           Dev-Ashy Mobile Creator helps developers build mobile applications
           using a modern React Native development workflow. From idea to app
           store in minutes, not months.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <a href="#cta" className="btn-primary text-base px-8 py-4">
+        <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 transition-all duration-1000 delay-600 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <a href="#cta" className="btn-primary text-base px-10 py-5">
             Start Building
           </a>
-          <a href="#features" className="btn-secondary text-base px-8 py-4">
+          <a href="#features" className="btn-secondary text-base px-10 py-5">
             Learn More
           </a>
         </div>
 
         {/* Terminal Preview */}
-        <div className="terminal max-w-2xl mx-auto text-left glow">
+        <div className={`terminal max-w-3xl mx-auto text-left glow transition-all duration-1000 delay-800 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <div className="terminal-header">
             <div className="terminal-dot terminal-dot-red" />
             <div className="terminal-dot terminal-dot-yellow" />
             <div className="terminal-dot terminal-dot-green" />
-            <span className="text-xs text-slate-500 ml-2">
-              dev-ashy — zsh
-            </span>
+            <span className="text-xs text-slate-500 ml-2">dev-ashy — zsh</span>
           </div>
-          <div className="p-6">
+          <div className="p-8">
             <p className="text-slate-500">
-              <span className="text-green-400">$</span> npx create-dev-ashy-app
-              my-app
+              <span className="text-green-400">$</span> npx create-dev-ashy-app my-app
             </p>
-            <p className="text-slate-300">
-              ✓ Creating project structure...
-            </p>
-            <p className="text-slate-300">
-              ✓ Installing dependencies...
-            </p>
-            <p className="text-slate-300">
-              ✓ Configuring Expo...
-            </p>
-            <p className="text-slate-300">
-              ✓ Setting up development environment...
-            </p>
-            <p className="text-green-400 mt-2">
-              ✓ Project created successfully!
-            </p>
+            <p className="text-slate-300">✓ Creating project structure...</p>
+            <p className="text-slate-300">✓ Installing dependencies...</p>
+            <p className="text-slate-300">✓ Configuring Expo...</p>
+            <p className="text-slate-300">✓ Setting up development environment...</p>
+            <p className="text-green-400 mt-2">✓ Project created successfully!</p>
             <p className="text-slate-500 mt-2">
               <span className="text-green-400">$</span> cd my-app && npm start
             </p>
-            <p className="text-slate-300">
-              ✓ Starting development server...
-            </p>
-            <p className="text-cyan-400">
-              ✓ Ready! Scan QR code with Expo Go to preview.
-            </p>
+            <p className="text-slate-300">✓ Starting development server...</p>
+            <p className="text-cyan-400">✓ Ready! Scan QR code with Expo Go to preview.</p>
           </div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-3xl mx-auto">
+        <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 max-w-3xl mx-auto transition-all duration-1000 delay-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           {[
             { value: "60fps", label: "Performance" },
             { value: "100%", label: "Cross-Platform" },
@@ -93,10 +119,8 @@ export default function Hero() {
             { value: "OSS", label: "Open Source" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-gradient">
-                {stat.value}
-              </div>
-              <div className="text-sm text-slate-500 mt-1">{stat.label}</div>
+              <div className="text-3xl md:text-4xl font-bold text-gradient">{stat.value}</div>
+              <div className="text-sm text-slate-500 mt-2">{stat.label}</div>
             </div>
           ))}
         </div>
