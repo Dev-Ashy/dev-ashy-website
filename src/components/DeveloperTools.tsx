@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 export default function DeveloperTools() {
   const [visible, setVisible] = useState(false);
@@ -34,6 +35,7 @@ export default function DeveloperTools() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
       ),
+      image: "/images/code-4k.jpg",
     },
     {
       name: "Dev-Ashy IDE",
@@ -45,6 +47,7 @@ export default function DeveloperTools() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
         </svg>
       ),
+      image: "/images/workspace-4k.jpg",
     },
     {
       name: "Dev-Ashy Cloud",
@@ -56,6 +59,7 @@ export default function DeveloperTools() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999A5.002 5.002 0 105.9 8.01 4.002 4.002 0 003 15z" />
         </svg>
       ),
+      image: "/images/gradient-4k.jpg",
     },
   ];
 
@@ -81,6 +85,17 @@ export default function DeveloperTools() {
               className={`card p-8 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
+              {/* Tool image */}
+              <div className="w-full h-32 rounded-xl overflow-hidden relative mb-6">
+                <Image
+                  src={tool.image}
+                  alt={tool.name}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a12] via-transparent to-transparent" />
+              </div>
+
               <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-6">
                 {tool.icon}
               </div>

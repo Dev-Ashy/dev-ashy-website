@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 export default function Features() {
   const [visible, setVisible] = useState(false);
@@ -34,7 +35,7 @@ export default function Features() {
         </svg>
       ),
       color: "from-indigo-500 to-purple-500",
-      image: "create",
+      image: "/images/code-4k.jpg",
     },
     {
       title: "BUILD",
@@ -46,7 +47,7 @@ export default function Features() {
         </svg>
       ),
       color: "from-cyan-500 to-blue-500",
-      image: "build",
+      image: "/images/workspace-4k.jpg",
     },
     {
       title: "RUN",
@@ -59,7 +60,7 @@ export default function Features() {
         </svg>
       ),
       color: "from-green-500 to-emerald-500",
-      image: "run",
+      image: "/images/mobile-4k.jpg",
     },
     {
       title: "SHIP",
@@ -71,7 +72,7 @@ export default function Features() {
         </svg>
       ),
       color: "from-orange-500 to-red-500",
-      image: "ship",
+      image: "/images/gradient-4k.jpg",
     },
   ];
 
@@ -110,15 +111,19 @@ export default function Features() {
                 </div>
               </div>
 
-              {/* Decorative visual */}
-              <div className="mt-6 h-32 rounded-xl bg-gradient-to-br from-[#0a0a12] to-[#12121e] border border-[#1e293b] overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${feature.color} opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-500`} />
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className={`text-6xl font-bold bg-gradient-to-br ${feature.color} bg-clip-text text-transparent opacity-30 group-hover:opacity-60 transition-opacity duration-500`}>
-                    {feature.title[0]}
-                  </div>
+              {/* Image preview */}
+              <div className="mt-6 h-48 rounded-xl overflow-hidden relative">
+                <Image
+                  src={feature.image}
+                  alt={feature.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a12] via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <span className="text-xs font-mono text-slate-400 bg-[#0a0a12]/80 px-2 py-1 rounded">
+                    {feature.title}
+                  </span>
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 export default function TechStack() {
   const [visible, setVisible] = useState(false);
@@ -49,6 +50,22 @@ export default function TechStack() {
           <p className={`text-slate-400 max-w-2xl mx-auto text-lg transition-all duration-1000 delay-200 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             Dev-Ashy leverages the best open-source technologies to deliver a premium development experience.
           </p>
+        </div>
+
+        {/* Background image */}
+        <div className="relative rounded-2xl overflow-hidden mb-12 h-64 md:h-80">
+          <Image
+            src="/images/circuit-4k.jpg"
+            alt="Technology"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050508] via-[#050508]/80 to-transparent" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <p className="text-lg md:text-xl text-slate-300 font-mono">
+              <span className="text-green-400">$</span> dev-ashy --tech-stack
+            </p>
+          </div>
         </div>
 
         <div className="flex flex-wrap justify-center gap-6">

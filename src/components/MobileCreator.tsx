@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 export default function MobileCreator() {
   const [visible, setVisible] = useState(false);
@@ -75,7 +76,7 @@ export default function MobileCreator() {
             </div>
           </div>
 
-          {/* Phone mockup with heavy visuals */}
+          {/* Phone mockup with image */}
           <div className={`relative flex justify-center transition-all duration-1000 delay-300 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}>
             <div className="relative">
               {/* Glow effect */}
@@ -93,32 +94,43 @@ export default function MobileCreator() {
                     </div>
                   </div>
 
-                  {/* App content */}
-                  <div className="px-5 py-3">
-                    {/* Header */}
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-400" />
-                      <div>
-                        <div className="h-3 bg-[#1a1a2e] rounded-full w-24 mb-2" />
-                        <div className="h-2 bg-[#1a1a2e] rounded-full w-16" />
-                      </div>
-                    </div>
+                  {/* App content with background image */}
+                  <div className="relative h-full">
+                    <Image
+                      src="/images/mobile-4k.jpg"
+                      alt="Mobile app"
+                      fill
+                      className="object-cover opacity-60"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#050508]/50 via-transparent to-[#050508]" />
 
-                    {/* Hero card */}
-                    <div className="h-36 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 border border-indigo-500/20 mb-4 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent" />
-                      <div className="absolute bottom-4 left-4">
-                        <div className="h-3 bg-white/20 rounded-full w-32 mb-2" />
-                        <div className="h-2 bg-white/10 rounded-full w-20" />
+                    {/* App UI overlay */}
+                    <div className="absolute inset-0 p-5 flex flex-col">
+                      {/* Header */}
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-400" />
+                        <div>
+                          <div className="h-3 bg-white/20 rounded-full w-24 mb-2" />
+                          <div className="h-2 bg-white/10 rounded-full w-16" />
+                        </div>
                       </div>
-                    </div>
 
-                    {/* Grid items */}
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="h-24 rounded-xl bg-[#0a0a12] border border-[#1e293b]" />
-                      <div className="h-24 rounded-xl bg-[#0a0a12] border border-[#1e293b]" />
-                      <div className="h-24 rounded-xl bg-[#0a0a12] border border-[#1e293b]" />
-                      <div className="h-24 rounded-xl bg-[#0a0a12] border border-[#1e293b]" />
+                      {/* Hero card */}
+                      <div className="h-36 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 border border-indigo-500/20 mb-4 relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent" />
+                        <div className="absolute bottom-4 left-4">
+                          <div className="h-3 bg-white/20 rounded-full w-32 mb-2" />
+                          <div className="h-2 bg-white/10 rounded-full w-20" />
+                        </div>
+                      </div>
+
+                      {/* Grid items */}
+                      <div className="grid grid-cols-2 gap-3 flex-1">
+                        <div className="h-24 rounded-xl bg-[#0a0a12]/80 border border-[#1e293b]" />
+                        <div className="h-24 rounded-xl bg-[#0a0a12]/80 border border-[#1e293b]" />
+                        <div className="h-24 rounded-xl bg-[#0a0a12]/80 border border-[#1e293b]" />
+                        <div className="h-24 rounded-xl bg-[#0a0a12]/80 border border-[#1e293b]" />
+                      </div>
                     </div>
                   </div>
                 </div>
