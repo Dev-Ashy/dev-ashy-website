@@ -3,10 +3,10 @@ export default function Footer() {
 
   const footerLinks = {
     Product: [
-      { label: "Mobile Creator", href: "#mobile-creator" },
-      { label: "Features", href: "#features" },
-      { label: "Templates", href: "#templates" },
-      { label: "Developer Tools", href: "#tools" },
+      { label: "Mobile Creator", href: "/product" },
+      { label: "Features", href: "/#features" },
+      { label: "Templates", href: "/#templates" },
+      { label: "Developer Tools", href: "/#tools" },
     ],
     Resources: [
       { label: "Documentation", href: "#" },
@@ -23,7 +23,7 @@ export default function Footer() {
     Company: [
       { label: "About", href: "#" },
       { label: "Careers", href: "#" },
-      { label: "Contact", href: "#" },
+      { label: "Contact", href: "/#contact" },
       { label: "Privacy", href: "#" },
     ],
   };

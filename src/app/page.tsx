@@ -7,6 +7,7 @@ import Templates from "@/components/Templates";
 import DeveloperTools from "@/components/DeveloperTools";
 import OpenSource from "@/components/OpenSource";
 import CTA from "@/components/CTA";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <DeveloperTools />
       <OpenSource />
       <CTA />
+      <Contact />
       <Footer />
     </main>
   );
