@@ -29,7 +29,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-[#1e293b] bg-[#050508]">
+    <footer className="border-t border-[#1e293b] bg-[#0a0a0f]">
       <div className="container py-20">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-16">
           <div className="col-span-2 md:col-span-1">

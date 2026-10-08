@@ -60,7 +60,7 @@ export default function TechStack() {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#050508] via-[#050508]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0f] via-[#0a0a0f]/80 to-transparent" />
           <div className="absolute inset-0 flex items-center justify-center">
             <p className="text-lg md:text-xl text-slate-300 font-mono">
               <span className="text-green-400">$</span> dev-ashy --tech-stack

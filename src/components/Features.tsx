@@ -78,7 +78,6 @@ export default function Features() {
 
   return (
     <section id="features" ref={ref} className="section-padding relative">
-      {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
 
@@ -119,9 +118,9 @@ export default function Features() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a12] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#12121a] via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4">
-                  <span className="text-xs font-mono text-slate-400 bg-[#0a0a12]/80 px-2 py-1 rounded">
+                  <span className="text-xs font-mono text-slate-400 bg-[#12121a]/80 px-2 py-1 rounded">
                     {feature.title}
                   </span>
                 </div>

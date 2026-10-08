@@ -36,11 +36,10 @@ export default function CTA() {
               fill
               className="object-cover opacity-20"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a12]/80 via-[#0a0a12]/60 to-[#0a0a12]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#12121a]/80 via-[#12121a]/60 to-[#12121a]" />
           </div>
 
           <div className="relative z-10">
-            {/* Background decoration */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
 
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">

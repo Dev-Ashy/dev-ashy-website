@@ -28,7 +28,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#050508]/80 backdrop-blur-2xl border-b border-[#1e293b]/50"
+          ? "bg-[#0a0a0f]/80 backdrop-blur-2xl border-b border-[#1e293b]/50"
           : "bg-transparent"
       }`}
     >
@@ -85,7 +85,7 @@ export default function Header() {
       </nav>
 
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#050508]/95 backdrop-blur-2xl border-b border-[#1e293b]/50">
+        <div className="md:hidden bg-[#0a0a0f]/95 backdrop-blur-2xl border-b border-[#1e293b]/50">
           <div className="px-6 py-4 flex flex-col gap-4">
             {navLinks.map((link) => (
               <a

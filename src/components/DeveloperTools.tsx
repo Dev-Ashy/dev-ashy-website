@@ -93,7 +93,7 @@ export default function DeveloperTools() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a12] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#12121a] via-transparent to-transparent" />
               </div>
 
               <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-6">

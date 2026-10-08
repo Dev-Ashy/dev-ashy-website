@@ -45,7 +45,7 @@ export default function OpenSource() {
   ];
 
   return (
-    <section id="opensource" ref={ref} className="section-padding bg-[#08080f] relative overflow-hidden">
+    <section id="opensource" ref={ref} className="section-padding bg-[#0d0d14] relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
 
       <div className="container relative z-10">

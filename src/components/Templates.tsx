@@ -70,7 +70,7 @@ export default function Templates() {
   ];
 
   return (
-    <section id="templates" ref={ref} className="section-padding bg-[#08080f] relative overflow-hidden">
+    <section id="templates" ref={ref} className="section-padding bg-[#0d0d14] relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
 
       <div className="container relative z-10">
@@ -99,9 +99,9 @@ export default function Templates() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a12] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#12121a] via-transparent to-transparent" />
                 <div className="absolute top-4 left-4">
-                  <span className="text-xs font-mono text-white bg-[#0a0a12]/80 px-2 py-1 rounded">
+                  <span className="text-xs font-mono text-white bg-[#12121a]/80 px-2 py-1 rounded">
                     {template.name}
                   </span>
                 </div>
@@ -113,7 +113,7 @@ export default function Templates() {
                 {template.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-3 py-1.5 rounded-full bg-[#12121e] text-slate-400 border border-[#1e293b]"
+                    className="text-xs px-3 py-1.5 rounded-full bg-[#1a1a25] text-slate-400 border border-[#1e293b]"
                   >
                     {tag}
                   </span>

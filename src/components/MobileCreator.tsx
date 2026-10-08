@@ -25,8 +25,7 @@ export default function MobileCreator() {
   }, []);
 
   return (
-    <section id="mobile-creator" ref={ref} className="section-padding bg-[#08080f] relative overflow-hidden">
-      {/* Background effects */}
+    <section id="mobile-creator" ref={ref} className="section-padding bg-[#0d0d14] relative overflow-hidden">
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[150px]" />
       <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px]" />
 
@@ -83,8 +82,8 @@ export default function MobileCreator() {
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/30 to-cyan-500/30 rounded-[50px] blur-3xl" />
 
               {/* Phone frame */}
-              <div className="relative w-[300px] h-[600px] bg-[#0a0a12] rounded-[40px] border-2 border-[#1e293b] p-3 shadow-2xl">
-                <div className="w-full h-full bg-[#050508] rounded-[32px] overflow-hidden relative">
+              <div className="relative w-[300px] h-[600px] bg-[#12121a] rounded-[40px] border-2 border-[#1e293b] p-3 shadow-2xl">
+                <div className="w-full h-full bg-[#0a0a0f] rounded-[32px] overflow-hidden relative">
                   {/* Status bar */}
                   <div className="flex justify-between items-center px-6 py-4 text-xs text-slate-500">
                     <span>9:41</span>
@@ -102,7 +101,7 @@ export default function MobileCreator() {
                       fill
                       className="object-cover opacity-60"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#050508]/50 via-transparent to-[#050508]" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f]/50 via-transparent to-[#0a0a0f]" />
 
                     {/* App UI overlay */}
                     <div className="absolute inset-0 p-5 flex flex-col">
@@ -126,10 +125,10 @@ export default function MobileCreator() {
 
                       {/* Grid items */}
                       <div className="grid grid-cols-2 gap-3 flex-1">
-                        <div className="h-24 rounded-xl bg-[#0a0a12]/80 border border-[#1e293b]" />
-                        <div className="h-24 rounded-xl bg-[#0a0a12]/80 border border-[#1e293b]" />
-                        <div className="h-24 rounded-xl bg-[#0a0a12]/80 border border-[#1e293b]" />
-                        <div className="h-24 rounded-xl bg-[#0a0a12]/80 border border-[#1e293b]" />
+                        <div className="h-24 rounded-xl bg-[#12121a]/80 border border-[#1e293b]" />
+                        <div className="h-24 rounded-xl bg-[#12121a]/80 border border-[#1e293b]" />
+                        <div className="h-24 rounded-xl bg-[#12121a]/80 border border-[#1e293b]" />
+                        <div className="h-24 rounded-xl bg-[#12121a]/80 border border-[#1e293b]" />
                       </div>
                     </div>
                   </div>
