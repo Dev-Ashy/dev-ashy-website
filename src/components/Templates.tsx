@@ -1,123 +1,90 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
+const templates = [
+  {
+    name: "Starter",
+    desc: "Minimal app with tab navigation and a solid base structure.",
+    tags: ["typescript", "expo-router"],
+    image: "/images/code-4k.jpg",
+  },
+  {
+    name: "E-Commerce",
+    desc: "Storefront with cart, checkout, and payment flows.",
+    tags: ["stripe", "cart", "auth"],
+    image: "/images/workspace-4k.jpg",
+  },
+  {
+    name: "Social",
+    desc: "Feeds, direct messages, and user profiles.",
+    tags: ["chat", "feed", "auth"],
+    image: "/images/mobile-4k.jpg",
+  },
+  {
+    name: "Dashboard",
+    desc: "Admin console with charts, tables, and analytics.",
+    tags: ["charts", "tables", "auth"],
+    image: "/images/circuit-4k.jpg",
+  },
+  {
+    name: "Fitness",
+    desc: "Workout tracking with progress and sensors.",
+    tags: ["health", "sensors"],
+    image: "/images/hero-bg.jpg",
+  },
+  {
+    name: "Food Delivery",
+    desc: "Ordering with maps, payments, and live tracking.",
+    tags: ["maps", "payments", "realtime"],
+    image: "/images/gradient-4k.jpg",
+  },
+];
+
 export default function Templates() {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const templates = [
-    {
-      name: "Starter",
-      description: "Clean minimal template with navigation and basic UI components",
-      tags: ["TypeScript", "Expo Router"],
-      gradient: "from-indigo-500 to-purple-500",
-      image: "/images/code-4k.jpg",
-    },
-    {
-      name: "E-Commerce",
-      description: "Full shopping app with cart, checkout, and payment integration",
-      tags: ["Stripe", "Cart", "Auth"],
-      gradient: "from-cyan-500 to-blue-500",
-      image: "/images/workspace-4k.jpg",
-    },
-    {
-      name: "Social",
-      description: "Social media app with feeds, messaging, and user profiles",
-      tags: ["Chat", "Feed", "Auth"],
-      gradient: "from-green-500 to-emerald-500",
-      image: "/images/mobile-4k.jpg",
-    },
-    {
-      name: "Dashboard",
-      description: "Admin dashboard with charts, tables, and analytics",
-      tags: ["Charts", "Tables", "Auth"],
-      gradient: "from-orange-500 to-red-500",
-      image: "/images/gradient-4k.jpg",
-    },
-    {
-      name: "Fitness",
-      description: "Health and fitness tracking with workouts and progress",
-      tags: ["Health", "Charts", "Sensors"],
-      gradient: "from-pink-500 to-rose-500",
-      image: "/images/circuit-4k.jpg",
-    },
-    {
-      name: "Food Delivery",
-      description: "Restaurant ordering with maps, payments, and real-time tracking",
-      tags: ["Maps", "Payments", "Realtime"],
-      gradient: "from-yellow-500 to-orange-500",
-      image: "/images/hero-bg.jpg",
-    },
-  ];
-
   return (
-    <section id="templates" ref={ref} className="section-padding bg-[#0d0d14] relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
-
-      <div className="container relative z-10">
-        <div className="text-center mb-20">
-          <h2 className={`text-4xl md:text-6xl font-bold tracking-tight mb-6 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-            <span className="text-white">Start with a</span>{" "}
-            <span className="text-gradient">template</span>
-          </h2>
-          <p className={`text-slate-400 max-w-2xl mx-auto text-lg transition-all duration-1000 delay-200 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-            Production-ready templates to jumpstart your project. Fully customizable and MIT licensed.
+    <section id="templates" className="section-padding bg-[#0d0d14]">
+      <div className="container">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
+          <div>
+            <p className="eyebrow-mono mb-4">starter templates</p>
+            <h2 className="font-display font-bold tracking-tight text-white text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05]">
+              Jump-start a project
+              <br />
+              on day one.
+            </h2>
+          </div>
+          <p className="text-[#94a3b8] max-w-[42ch] text-[15px] leading-relaxed">
+            Production-ready templates for the Mobile App Creator. MIT licensed,
+            free to remix, and fully customizable.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {templates.map((template, index) => (
-            <div
-              key={template.name}
-              className={`card p-8 group transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              {/* Template preview with real image */}
-              <div className="w-full h-40 rounded-2xl overflow-hidden relative mb-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {templates.map((template) => (
+            <div key={template.name} className="panel panel-hover flex flex-col">
+              <div className="relative h-40 overflow-hidden rounded-t-[5px]">
                 <Image
                   src={template.image}
-                  alt={template.name}
+                  alt={`${template.name} template screenshot`}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 380px"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#12121a] via-transparent to-transparent" />
-                <div className="absolute top-4 left-4">
-                  <span className="text-xs font-mono text-white bg-[#12121a]/80 px-2 py-1 rounded">
-                    {template.name}
-                  </span>
-                </div>
               </div>
-
-              <h3 className="text-xl font-bold mb-3">{template.name}</h3>
-              <p className="text-sm text-slate-400 mb-6">{template.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {template.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs px-3 py-1.5 rounded-full bg-[#1a1a25] text-slate-400 border border-[#1e293b]"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              <div className="p-5 flex flex-col flex-1">
+                <h3 className="font-display font-semibold text-[18px] text-white tracking-tight mb-2">
+                  {template.name}
+                </h3>
+                <p className="text-[13px] text-[#94a3b8] leading-relaxed flex-1 mb-5">
+                  {template.desc}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {template.tags.map((tag) => (
+                    <span key={tag} className="chip">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

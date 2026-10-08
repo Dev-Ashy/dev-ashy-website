@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 
 test.describe("Dev-Ashy Website Screenshots", () => {
   test("homepage screenshot", async ({ page }) => {

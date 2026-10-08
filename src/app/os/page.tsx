@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Header from "@/components/Header";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import DesktopEnvironments from "@/components/DesktopEnvironments";
 
 export const metadata: Metadata = {
   title: "Dev-Ashy OS | Your developer workstation, rebuilt",
   description:
-    "Dev-Ashy OS is a modern, developer-focused Linux distribution built around Ubuntu. Pre-installed with everything you need for software development, AI development, cybersecurity, mobile development, and creative work.",
+    "Dev-Ashy OS is a developer-focused Linux distribution built around Ubuntu. Choose your desktop environment, with Wine and security tooling built in.",
   keywords: [
     "Dev-Ashy OS",
     "Linux",
@@ -15,35 +19,62 @@ export const metadata: Metadata = {
   ],
 };
 
+const features = [
+  {
+    id: "dev tools",
+    title: "Developer Tools",
+    desc: "Node.js, Python, Go, Rust, Java, Git, GitHub CLI, and more — pre-installed.",
+  },
+  {
+    id: "ai stack",
+    title: "AI Stack",
+    desc: "Ollama, OpenCode, and the Dev-Ashy CLI for local and remote model work.",
+  },
+  {
+    id: "security",
+    title: "Security Tools",
+    desc: "Network analysis and hardening tooling, expanded in the Security edition.",
+  },
+  {
+    id: "mobile dev",
+    title: "Mobile Development",
+    desc: "React Native, Expo, and Android tooling configured out of the box.",
+  },
+  {
+    id: "windows apps",
+    title: "Windows Apps",
+    desc: "Wine and Winetricks bundled, so Windows software keeps running.",
+  },
+  {
+    id: "branding",
+    title: "Dev-Ashy Branding",
+    desc: "Custom themes, wallpapers, terminal config, and default icons.",
+  },
+];
+
 export default function OSPage() {
   return (
     <main className="min-h-screen">
+      <Header />
+
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 animated-bg" />
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-[120px] animate-pulse-glow" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-cyan-500/15 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
-
-        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-          <div className="badge mb-8">
-            <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-            Alpha Release
-          </div>
-
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8">
-            <span className="text-gradient glow-text">Dev-Ashy OS</span>
+      <section className="pt-36 pb-20 border-b border-[#1e293b]">
+        <div className="container">
+          <p className="eyebrow-mono mb-5">dev-ashy os · flagship</p>
+          <h1 className="font-display font-bold tracking-tight text-white text-[clamp(3rem,9vw,7rem)] leading-[0.98] mb-7">
+            Dev-Ashy OS
           </h1>
-
-          <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Your developer workstation, rebuilt.
+          <p className="text-[#a5b4c8] text-lg max-w-[52ch] leading-relaxed mb-10">
+            Your developer workstation, rebuilt. A Linux distribution for people
+            who build — your desktop, your environment, your choice.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <a
               href="https://github.com/Dev-Ashy/dev-ashy-os/releases"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary text-base px-10 py-5"
+              className="btn-primary btn-hero"
             >
               Download ISO
             </a>
@@ -51,132 +82,109 @@ export default function OSPage() {
               href="https://github.com/Dev-Ashy/dev-ashy-os"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary text-base px-10 py-5"
+              className="btn-secondary !py-[18px]"
             >
-              View on GitHub
+              Source on GitHub
             </a>
           </div>
 
-          {/* System requirements */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl">
             {[
               { value: "4 GB", label: "RAM" },
-              { value: "25 GB", label: "Disk" },
-              { value: "64-bit", label: "CPU" },
-              { value: "4 GB", label: "USB" },
+              { value: "25 GB", label: "disk" },
+              { value: "64-bit", label: "cpu" },
+              { value: "4 GB", label: "usb" },
             ].map((req) => (
-              <div key={req.label} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gradient">{req.value}</div>
-                <div className="text-sm text-slate-500 mt-2">{req.label}</div>
+              <div key={req.label} className="panel panel-hover p-5">
+                <p className="font-display font-bold text-[24px] text-white tracking-tight">
+                  {req.value}
+                </p>
+                <p className="font-mono text-[11px] text-[#64748b] mt-1">{req.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="section-padding bg-[#08080f]">
-        <div className="container">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-              <span className="text-white">Everything you need.</span>
-              <br />
-              <span className="text-gradient">Pre-installed.</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Developer Tools",
-                description: "Node.js, Python, Go, Rust, Java, Git, GitHub CLI, and more.",
-                icon: "💻",
-              },
-              {
-                title: "AI Tools",
-                description: "Ollama, OpenCode, Gemini CLI, Hermes Agent support.",
-                icon: "🤖",
-              },
-              {
-                title: "Security Tools",
-                description: "Nmap, Metasploit, Wireshark, and penetration testing tools.",
-                icon: "🔒",
-              },
-              {
-                title: "Mobile Development",
-                description: "React Native, Expo, Android SDK pre-configured.",
-                icon: "📱",
-              },
-              {
-                title: "Creative Tools",
-                description: "FFmpeg, OBS Studio, GIMP, Blender, and more.",
-                icon: "🎨",
-              },
-              {
-                title: "Dev-Ashy Branding",
-                description: "Custom themes, wallpapers, and terminal configuration.",
-                icon: "✨",
-              },
-            ].map((feature) => (
-              <div key={feature.title} className="card p-8">
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-slate-400">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Download */}
+      {/* Desktop environments */}
       <section className="section-padding">
         <div className="container">
-          <div className="card p-16 text-center glow">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              <span className="text-gradient">Download Dev-Ashy OS</span>
-            </h2>
-            <p className="text-slate-400 max-w-xl mx-auto text-lg mb-10">
-              Download the latest ISO and create a bootable USB drive.
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
+            <div>
+              <p className="eyebrow-mono mb-4">pick your desktop</p>
+              <h2 className="font-display font-bold tracking-tight text-white text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05]">
+                Choose your environment
+                <br />
+                at install.
+              </h2>
+            </div>
+            <p className="text-[#94a3b8] max-w-[46ch] text-[15px] leading-relaxed">
+              Select a desktop environment below to see what gets installed.
+              Your machine will need an internet connection during installation
+              so the right packages can be downloaded.
             </p>
+          </div>
 
-            <div className="terminal max-w-lg mx-auto text-left mb-10">
-              <div className="terminal-header">
-                <div className="terminal-dot terminal-dot-red" />
-                <div className="terminal-dot terminal-dot-yellow" />
-                <div className="terminal-dot terminal-dot-green" />
-              </div>
-              <div className="p-6">
-                <p className="text-slate-500">
-                  <span className="text-green-400">$</span> sudo dd if=Dev-Ashy-OS-0.1.0-amd64.iso of=/dev/sdX bs=4M
+          <DesktopEnvironments />
+        </div>
+      </section>
+
+      {/* What's inside */}
+      <section className="section-padding bg-[#0d0d14]">
+        <div className="container">
+          <p className="eyebrow-mono mb-4">everything you need, pre-installed</p>
+          <h2 className="font-display font-bold tracking-tight text-white text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] mb-14">
+            Ship day one.
+          </h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {features.map((feature) => (
+              <div key={feature.id} className="panel panel-hover p-6">
+                <div className="win-bar !mb-5">
+                  <span className="win-dot" />
+                  {feature.id}
+                </div>
+                <h3 className="font-display font-semibold text-[18px] text-white tracking-tight mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-[13px] text-[#94a3b8] leading-relaxed">
+                  {feature.desc}
                 </p>
               </div>
-            </div>
+            ))}
+          </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="https://github.com/Dev-Ashy/dev-ashy-os/releases"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary text-base px-10 py-5"
-              >
-                Download from GitHub
-              </a>
-              <Link href="/" className="btn-secondary text-base px-10 py-5">
-                Back to Home
-              </Link>
+          <div className="mt-12 panel overflow-hidden">
+            <div className="win-bar">
+              <span className="win-dot" />
+              flash the iso
             </div>
+            <div className="p-7 md:p-9 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+              <p className="text-[14.5px] text-[#a5b4c8] leading-relaxed flex-1">
+                Download the latest image, write it to a USB drive, and boot.
+                The installer walks you through disk setup, desktop selection,
+                and Dev-Ashy branding.
+              </p>
+              <div className="terminal shrink-0 md:w-[380px]">
+                <div className="terminal-body !py-4 text-[12px] leading-[1.9]">
+                  <p className="text-[#64748b]">
+                    <span className="text-[#22d3ee]">$</span> sudo dd if=Dev-Ashy-OS-0.1.0-amd64.iso of=/dev/sdX bs=4M
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10">
+            <Link href="/product" className="btn-secondary">
+              ← Back to products
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-[#1e293b] bg-[#050508] py-12">
-        <div className="container text-center">
-          <p className="text-slate-500">
-            &copy; 2026 Dev-Ashy Limited. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Contact />
+      <Footer />
     </main>
   );
 }

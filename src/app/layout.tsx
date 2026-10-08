@@ -23,16 +23,16 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Dev-Ashy | Build Beyond the Screen",
   description:
-    "Dev-Ashy Mobile Creator helps developers build mobile applications using a modern React Native development workflow. CREATE, BUILD, RUN, SHIP.",
+    "Dev-Ashy Limited — operating systems, security editions, developer tools, and mobile infrastructure. Build beyond the screen.",
   keywords: [
     "Dev-Ashy",
-    "Mobile Creator",
-    "React Native",
-    "Expo",
-    "mobile app development",
+    "Dev-Ashy OS",
+    "Linux",
     "developer tools",
     "CLI",
     "IDE",
+    "Mobile App Creator",
+    "React Native",
   ],
   authors: [{ name: "Dev-Ashy Limited" }],
   openGraph: {

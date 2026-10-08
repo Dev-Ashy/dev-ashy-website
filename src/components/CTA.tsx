@@ -1,63 +1,30 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-
 export default function CTA() {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section id="cta" ref={ref} className="section-padding relative">
+    <section id="cta" className="section-padding">
       <div className="container">
-        <div className={`card p-16 md:p-24 text-center glow transition-all duration-1000 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}>
-          {/* Background image */}
-          <div className="absolute inset-0 rounded-2xl overflow-hidden">
-            <Image
-              src="/images/gradient-4k.jpg"
-              alt="Background"
-              fill
-              className="object-cover opacity-20"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#12121a]/80 via-[#12121a]/60 to-[#12121a]" />
+        <div className="panel overflow-hidden">
+          <div className="win-bar">
+            <span className="win-dot" />
+            dev-ashy --install
+            <span className="ml-auto text-[#64748b]">cross-platform</span>
           </div>
-
-          <div className="relative z-10">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
-
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-              <span className="text-gradient">Ready to build?</span>
+          <div className="px-6 py-14 md:py-20 text-center">
+            <h2 className="font-display font-bold tracking-tight text-white text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] mb-5">
+              Ready to build?
             </h2>
-            <p className="text-slate-400 max-w-xl mx-auto text-lg mb-10">
-              Start building your mobile app today. Free and open source.
+            <p className="text-[#94a3b8] text-[15px] max-w-xl mx-auto mb-9">
+              Install the CLI, pull down the source, or grab an OS image. Free
+              and open source — start today.
             </p>
 
             <div className="terminal max-w-lg mx-auto text-left mb-10">
-              <div className="terminal-header">
-                <div className="terminal-dot terminal-dot-red" />
-                <div className="terminal-dot terminal-dot-yellow" />
-                <div className="terminal-dot terminal-dot-green" />
-              </div>
-              <div className="p-6">
-                <p className="text-slate-500">
-                  <span className="text-green-400">$</span> npx create-dev-ashy-app my-app
+              <div className="terminal-body !py-4">
+                <p className="text-[#64748b]">
+                  <span className="text-[#22d3ee]">$</span> npm install -g @dev-ashy/cli
+                </p>
+                <p className="text-[#94a3b8]">
+                  <span className="text-[#22d3ee]">$</span> dev-ashy create my-app
+                  <span className="cursor-blink ml-1.5" />
                 </p>
               </div>
             </div>
@@ -67,12 +34,12 @@ export default function CTA() {
                 href="https://github.com/Dev-Ashy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary text-base px-10 py-5"
+                className="btn-primary"
               >
-                Get Started on GitHub
+                Get started on GitHub
               </a>
-              <a href="#features" className="btn-secondary text-base px-10 py-5">
-                Learn More
+              <a href="/product" className="btn-secondary">
+                Browse products
               </a>
             </div>
           </div>
