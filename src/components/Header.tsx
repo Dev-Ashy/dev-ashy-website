@@ -75,7 +75,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[100] border-b transition-colors duration-300 ${
         scrolled
           ? "bg-[#0b0d0c]/85 backdrop-blur-xl border-[#222923]"
           : "bg-[#0b0d0c]/40 backdrop-blur-md border-[#222923]/60"
