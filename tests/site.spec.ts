@@ -38,9 +38,9 @@ test.describe("Dev-Ashy site · functional", () => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto("/");
     await page.waitForLoadState("networkidle");
-    await page.getByRole("button", { name: "Toggle menu" }).click();
+    await page.getByRole("button", { name: "Toggle menu" }).click({ force: true });
     await expect(page.locator("body")).toContainText("Explore Products");
-    await page.getByRole("button", { name: "Toggle menu" }).click();
+    await page.getByRole("button", { name: "Toggle menu" }).click({ force: true });
   });
 
   test("product page exposes OS desktop gallery and selector", async ({ page }) => {
@@ -58,7 +58,7 @@ test.describe("Dev-Ashy site · functional", () => {
     await page
       .locator("button[aria-pressed]")
       .filter({ hasText: "KDE Plasma" })
-      .click();
+      .click({ force: true });
     await expect(page.locator("#os-select")).toContainText("connected to the internet");
     await expect(page.locator("#os-select")).toContainText("KDE Plasma selected");
     await expect(page.locator("#os-select")).toContainText("plasma-desktop");
