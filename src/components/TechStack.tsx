@@ -17,7 +17,7 @@ export default function TechStack() {
           <div className="win-bar">
             <span className="win-dot" />
             04 / under the hood · dev-ashy --tech-stack
-            <span className="ml-auto text-[#7a847d]">stable engine compilation</span>
+            <span className="ml-auto text-[#7a847d]">open source · cross-platform</span>
           </div>
 
           <div className="grid lg:grid-cols-2">

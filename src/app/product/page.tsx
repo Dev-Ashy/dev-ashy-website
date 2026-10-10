@@ -46,17 +46,17 @@ export default function ProductPage() {
       {/* System catalog status strip */}
       <div className="border-b border-[#222923] bg-[#0f110f]">
         <div className="mx-auto max-w-[1240px] px-5 py-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[11px] text-[#a0aaa1]">
-          <span className="text-[#b8f36b]">SYS.CATALOG // v2026.04</span>
+          <span className="text-[#b8f36b]">SYS.CATALOG // PUBLIC ROADMAP</span>
           <span className="hidden sm:inline text-[#7a847d]">|</span>
           <span className="hidden sm:inline">ARCH: x86_64 + aarch64</span>
           <span className="hidden lg:inline text-[#7a847d]">|</span>
-          <span className="hidden lg:inline">LOC: LAGOS_NODE_01</span>
+          <span className="hidden lg:inline">LOC: LAGOS, NIGERIA</span>
           <span className="hidden xl:inline text-[#7a847d]">|</span>
           <span className="hidden xl:inline flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-[#4ade80] status-pulse" />
-            STATUS: ALL RUNTIMES STABLE
+            STATUS: RELEASED + PLANNED
           </span>
-          <span className="ml-auto text-[#7a847d]">BUFFER: LIVE KERNEL</span>
+          <span className="ml-auto text-[#7a847d]">SOURCE: OPEN</span>
         </div>
       </div>
 

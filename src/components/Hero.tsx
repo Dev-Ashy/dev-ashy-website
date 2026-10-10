@@ -13,24 +13,41 @@ const slides = [
   { src: "/images/slideshow/coding-4k.jpg", alt: "Programming languages on screen", label: "programming languages" },
 ];
 
+// These describe the planned Dev-Ashy OS spec — not live machine telemetry.
 const telemetry = [
   { key: "distro", value: "Dev-Ashy OS · Ubuntu Base" },
   { key: "compositor", value: "Hyprland · wayland" },
-  { key: "shell", value: "zsh 5.9" },
-  { key: "kernel", value: "6.8 LTS · stable" },
+  { key: "shell", value: "zsh · configurable" },
+  { key: "kernel", value: "6.8 LTS · ubuntu base" },
   { key: "runtime", value: "Node 22.x" },
-  { key: "load", value: "0.02 · normal" },
+  { key: "status", value: "In development" },
 ];
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
+  const [playing, setPlaying] = useState(true);
+  const [interacting, setInteracting] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
+  // If the visitor asks for reduced motion, never auto-advance.
   useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = () => setReducedMotion(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
+
+  // Auto-advance only while playing, not hovered/focused, and motion is allowed.
+  useEffect(() => {
+    if (!playing || interacting || reducedMotion) return;
     const timer = window.setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 6000);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [playing, interacting, reducedMotion]);
+
+  const advancing = playing && !interacting && !reducedMotion;
 
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden">
@@ -54,31 +71,39 @@ export default function Hero() {
             />
           </div>
         ))}
-        {/* Legibility scrims */}
-        <div className="absolute inset-0 bg-[#0b0d0c]/55" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d0c] via-[#0b0d0c]/30 to-[#0b0d0c]/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0d0c]/80 via-[#0b0d0c]/20 to-transparent" />
+        {/* Legibility scrims — kept just strong enough to hold text, light
+            enough that the photography actually reads. */}
+        <div className="absolute inset-0 bg-[#0b0d0c]/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d0c] via-[#0b0d0c]/20 to-[#0b0d0c]/45" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0d0c]/85 via-[#0b0d0c]/25 to-transparent" />
       </div>
 
       {/* Top telemetry strip */}
       <div className="relative z-10 border-b border-[#222923] bg-[#0b0d0c]/70 backdrop-blur-sm">
         <div className="mx-auto max-w-[1240px] px-5 py-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[11px] text-[#a0aaa1]">
-          <span className="text-[#4ade80]">KERNEL 6.8 · STABLE</span>
+          <span className="text-[#4ade80]">DEV-ASHY OS · IN DEVELOPMENT</span>
           <span className="hidden sm:inline text-[#7a847d]">|</span>
           <span className="hidden sm:inline">DEV-ASHY LIMITED · LAGOS, NIGERIA · EST. 2026</span>
           <span className="hidden lg:inline text-[#7a847d]">|</span>
           <span className="hidden lg:inline">ARCH: x86_64 / aarch64</span>
           <span className="hidden xl:inline text-[#7a847d]">|</span>
-          <span className="hidden xl:inline">RUNTIME: Node 22.x · Wayland Hyprland</span>
+          <span className="hidden xl:inline">STACK: REACT NATIVE · EXPO · UBUNTU</span>
           <span className="ml-auto flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-[#b8f36b] status-pulse" />
-            SYS: NORMAL [0.02 LOAD]
+            OPEN ECOSYSTEM
           </span>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 w-full mx-auto max-w-[1240px] px-5 pt-16 pb-28 lg:pt-20 flex-1 flex flex-col justify-center">
+      {/* Content. Hover/focus here pauses the rotation; the control rail
+          below is deliberately outside it so Play/Pause still works. */}
+      <div
+        className="relative z-10 w-full mx-auto max-w-[1240px] px-5 pt-16 pb-28 lg:pt-20 flex-1 flex flex-col justify-center"
+        onMouseEnter={() => setInteracting(true)}
+        onMouseLeave={() => setInteracting(false)}
+        onFocus={() => setInteracting(true)}
+        onBlur={() => setInteracting(false)}
+      >
         <div className="grid lg:grid-cols-[minmax(0,1fr)_460px] gap-14 items-center">
           {/* Left column */}
           <div className="hero-in" style={{ animationDelay: "0.05s" }}>
@@ -144,7 +169,7 @@ export default function Hero() {
               </div>
               <div className="terminal-body bg-[#090b0a] font-mono text-[13px] leading-[1.9]">
                 <p className="text-[#7a847d]">
-                  <span className="text-[#4ade80]">●</span> SYSTEM TELEMETRY · READY
+                  <span className="text-[#4ade80]">●</span> DEV-ASHY OS · SPEC
                 </p>
                 <p className="text-[#e2e3e0]">
                   <span className="text-[#7a847d]">distro</span> dev-ashy os · ubuntu base
@@ -180,6 +205,24 @@ export default function Hero() {
         <div className="mx-auto max-w-[1240px] px-5 py-3.5 flex items-center gap-5">
           <button
             type="button"
+            onClick={() => setPlaying((prev) => !prev)}
+            aria-label={playing ? "Pause slideshow" : "Play slideshow"}
+            aria-pressed={!playing}
+            className="text-[#a0aaa1] hover:text-[#f4f6f2] transition-colors"
+          >
+            {playing ? (
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+              </svg>
+            ) : (
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            )}
+          </button>
+
+          <button
+            type="button"
             onClick={() =>
               setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
             }
@@ -199,7 +242,10 @@ export default function Hero() {
               <div
                 key={current}
                 className="slide-progress h-full bg-[#b8f36b]"
-                style={{ width: 0 }}
+                style={{
+                  width: 0,
+                  animationPlayState: advancing ? "running" : "paused",
+                }}
               />
             </div>
             <span className="font-mono text-[11px] text-[#a5b4c8] truncate">

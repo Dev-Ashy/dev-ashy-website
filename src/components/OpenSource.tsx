@@ -1,36 +1,35 @@
 import StatusBadge from "@/components/StatusBadge";
 import type { BadgeTone } from "@/components/StatusBadge";
 
+// Only repositories that genuinely exist and are public are listed. The real
+// primary language is shown instead of invented star counts — real social
+// proof beats a number a visitor can disprove in one click.
 const repos: {
   name: string;
   desc: string;
-  stars: string;
   lang: string;
   badge: string;
   tone: BadgeTone;
 }[] = [
   {
     name: "dev-ashy-cli",
-    desc: "Command-line interface for the Dev-Ashy ecosystem. Project generator, doctor, emulator sync.",
-    stars: "★ 1.2k",
+    desc: "Command-line interface for the Dev-Ashy ecosystem — project generator, doctor, mobile sync.",
     lang: "typescript",
-    badge: "SHIPPING",
-    tone: "shipping",
+    badge: "ALPHA",
+    tone: "alpha",
   },
   {
-    name: "dev-ashy-ide",
-    desc: "Desktop IDE built for the ecosystem — high performance editor, terminal multiplexer, local AI.",
-    stars: "★ 420",
-    lang: "typescript / rust",
-    badge: "BETA",
-    tone: "beta",
+    name: "dev-ashy-os",
+    desc: "Your developer workstation, rebuilt — a developer Linux distribution built on Ubuntu.",
+    lang: "shell",
+    badge: "ALPHA",
+    tone: "alpha",
   },
   {
     name: "dev-ashy-website",
-    desc: "This exact site. Open source, MIT licensed, built with zero dependency clutter for low latency.",
-    stars: "★ 180",
-    lang: "typescript / html",
-    badge: "LIVE",
+    desc: "This site — the Dev-Ashy public website, built with Next.js and TypeScript.",
+    lang: "typescript",
+    badge: "SHIPPING",
     tone: "shipping",
   },
 ];
@@ -69,8 +68,7 @@ export default function OpenSource() {
                     {repo.desc}
                   </span>
                   <span className="flex items-center gap-4 sm:justify-end">
-                    <span className="font-mono text-[11px] text-[#7a847d]">{repo.stars}</span>
-                    <span className="font-mono text-[11px] text-[#7a847d] hidden xl:inline">
+                    <span className="font-mono text-[11px] text-[#7a847d]">
                       {repo.lang}
                     </span>
                     <StatusBadge tone={repo.tone}>{repo.badge}</StatusBadge>
@@ -96,7 +94,7 @@ export default function OpenSource() {
             rel="noopener noreferrer"
             className="btn-primary"
           >
-            ★ Star Dev-Ashy OS repository
+            ★ Star dev-ashy-os on GitHub
           </a>
         </div>
       </div>

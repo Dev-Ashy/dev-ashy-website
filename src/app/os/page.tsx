@@ -60,15 +60,15 @@ export default function OSPage() {
       {/* System status strip */}
       <div className="border-b border-[#222923] bg-[#0f110f]">
         <div className="mx-auto max-w-[1240px] px-5 py-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[11px] text-[#a0aaa1]">
-          <span className="text-[#b8f36b]">OS.ISO // v2026.04</span>
+          <span className="text-[#b8f36b]">DEV-ASHY OS // IN DEVELOPMENT</span>
           <span className="hidden sm:inline text-[#7a847d]">|</span>
           <span className="hidden sm:inline">BASE: UBUNTU · DEBIAN</span>
           <span className="hidden lg:inline text-[#7a847d]">|</span>
           <span className="hidden lg:inline flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-[#4ade80] status-pulse" />
-            KERNEL 6.8 · STABLE
+            PRE-RELEASE · NO PUBLIC IMAGE YET
           </span>
-          <span className="ml-auto text-[#7a847d]">LOC: LAGOS_NODE_01</span>
+          <span className="ml-auto text-[#7a847d]">LOC: LAGOS, NIGERIA</span>
         </div>
       </div>
 
@@ -84,14 +84,12 @@ export default function OSPage() {
             who build — your desktop, your environment, your choice.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 mb-5">
             <a
-              href="https://github.com/Dev-Ashy/dev-ashy-os/releases"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:ashrafbello51@gmail.com?subject=Dev-Ashy%20OS%20early%20access"
               className="btn-primary btn-hero"
             >
-              Download ISO
+              Get notified at launch →
             </a>
             <a
               href="https://github.com/Dev-Ashy/dev-ashy-os"
@@ -102,6 +100,10 @@ export default function OSPage() {
               Source on GitHub
             </a>
           </div>
+          <p className="font-mono text-[12.5px] text-[#7a847d] leading-relaxed mb-12 max-w-[58ch]">
+            Dev-Ashy OS is in active development — there is no public image yet.
+            The first builds will be published on GitHub releases.
+          </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl">
             {[
@@ -172,18 +174,31 @@ export default function OSPage() {
           <div className="mt-12 panel overflow-hidden">
             <div className="win-bar">
               <span className="win-dot" />
-              flash the iso
+              installing · when the iso ships
             </div>
             <div className="p-7 md:p-9 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
-              <p className="font-mono text-[14px] text-[#a0aaa1] leading-relaxed flex-1">
-                Download the latest image, write it to a USB drive, and boot.
-                The installer walks you through disk setup, desktop selection,
-                and Dev-Ashy branding.
-              </p>
+              <div className="flex-1">
+                <p className="font-mono text-[14px] text-[#a0aaa1] leading-relaxed max-w-[58ch]">
+                  No image has been published yet — Dev-Ashy OS is still in
+                  development. When the first build lands, you&apos;ll flash it to a
+                  USB drive with one command and boot into the installer.
+                </p>
+                <a
+                  href="https://github.com/Dev-Ashy/dev-ashy-os/releases"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-4 font-mono text-[13px] text-[#b8f36b] underline hover:text-[#c7f688]"
+                >
+                  Download ISO (when released) →
+                </a>
+              </div>
               <div className="terminal shrink-0 md:w-[380px]">
                 <div className="terminal-body !py-4 text-[12px] leading-[1.9]">
+                  <p className="text-[#7a847d] mb-1">
+                    <span className="text-[#4ade80]">#</span> example
+                  </p>
                   <p className="text-[#a0aaa1]">
-                    <span className="text-[#4ade80]">$</span> sudo dd if=Dev-Ashy-OS-0.1.0-amd64.iso of=/dev/sdX bs=4M
+                    <span className="text-[#4ade80]">$</span> sudo dd if=dev-ashy-os.iso of=/dev/sdX bs=4M
                   </p>
                 </div>
               </div>

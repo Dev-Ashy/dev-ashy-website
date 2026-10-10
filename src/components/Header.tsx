@@ -14,7 +14,7 @@ const products: {
 }[] = [
   { name: "Dev-Ashy OS", href: "/product#os", badge: "HYPR", tone: "shipping" },
   { name: "Security OS", href: "/product#security", badge: "KALI", tone: "planned" },
-  { name: "Dev-Ashy CLI", href: "/product", badge: "v1.4", tone: "shipping" },
+  { name: "Dev-Ashy CLI", href: "/product", badge: "v0.1.0", tone: "alpha" },
   { name: "Dev-Ashy IDE", href: "/product", badge: "BETA", tone: "beta" },
   { name: "Mobile Creator", href: "/product#mobile-creator", badge: "PROD", tone: "shipping" },
 ];
@@ -97,7 +97,7 @@ export default function Header() {
               DEV-ASHY LIMITED
             </span>
             <span className="font-mono text-[9px] text-[#7a847d] tracking-[0.08em] mt-0.5">
-              v2026 · open source
+              open-source ecosystem
             </span>
           </span>
         </Link>
@@ -173,7 +173,7 @@ export default function Header() {
             <span className="w-1.5 h-1.5 bg-[#b8f36b] status-pulse" />
             LAGOS {now} UTC+1
             <span className="text-[#7a847d]">|</span>
-            <span className="text-[#4ade80]">SYSTEM NORMAL</span>
+            <span className="text-[#4ade80]">OPEN SOURCE</span>
           </span>
           <a
             href="https://github.com/Dev-Ashy"
