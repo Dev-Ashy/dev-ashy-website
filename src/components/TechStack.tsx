@@ -16,8 +16,8 @@ export default function TechStack() {
         <div className="panel overflow-hidden">
           <div className="win-bar">
             <span className="win-dot" />
-            dev-ashy --tech-stack
-            <span className="ml-auto text-[#64748b]">open source</span>
+            04 / under the hood · dev-ashy --tech-stack
+            <span className="ml-auto text-[#7a847d]">stable engine compilation</span>
           </div>
 
           <div className="grid lg:grid-cols-2">
@@ -29,25 +29,25 @@ export default function TechStack() {
                 sizes="(max-width: 1024px) 100vw, 600px"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#12121a] hidden lg:block" />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#12121a] lg:hidden" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#121613] hidden lg:block" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#121613] lg:hidden" />
             </div>
 
             <div className="p-8 md:p-10">
-              <p className="eyebrow-mono mb-4">under the hood</p>
-              <h2 className="font-display font-bold tracking-tight text-white text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.05] mb-7">
+              <p className="eyebrow-mono mb-4">open source ecosystem</p>
+              <h2 className="font-display font-bold tracking-tight text-[#f4f6f2] text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.05] mb-7">
                 Built on proven
                 <br />
                 open technology.
               </h2>
-              <ul className="divide-y divide-[#1e293b] border-y border-[#1e293b]">
+              <ul className="divide-y divide-[#222923] border-y border-[#222923]">
                 {stack.map((item) => (
                   <li
                     key={item.name}
                     className="flex items-center justify-between gap-4 py-3 font-mono text-[13px]"
                   >
-                    <span className="text-[#e2e8f0]">{item.name}</span>
-                    <span className="text-[#64748b] text-[11px]">{item.role}</span>
+                    <span className="text-[#e2e3e0]">{item.name}</span>
+                    <span className="text-[#7a847d] text-[11px]">{item.role}</span>
                   </li>
                 ))}
               </ul>

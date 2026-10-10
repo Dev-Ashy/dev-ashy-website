@@ -99,8 +99,8 @@ export default function DesktopEnvironments() {
               aria-pressed={active}
               className={`panel text-left group relative overflow-hidden transition-all ${
                 active
-                  ? "!border-[#22d3ee] ring-1 ring-[#22d3ee]/40"
-                  : "hover:border-[#475569]"
+                  ? "!border-[#b8f36b] ring-1 ring-[#b8f36b]/40"
+                  : "hover:border-[#3a453c]"
               }`}
             >
               <div className="relative h-36 overflow-hidden">
@@ -113,9 +113,9 @@ export default function DesktopEnvironments() {
                     active ? "opacity-90" : "opacity-60 group-hover:opacity-80"
                   }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#12121a] via-[#12121a]/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#121613] via-[#121613]/30 to-transparent" />
                 {active && (
-                  <span className="absolute top-3 right-3 chip chip-live">selected</span>
+                  <span className="absolute top-3 right-3 badge badge-shipping">selected</span>
                 )}
               </div>
               <div className="win-bar !border-t !border-b-0 !rounded-none bg-transparent">
@@ -123,11 +123,11 @@ export default function DesktopEnvironments() {
                 {env.id}
               </div>
               <div className="px-5 py-4">
-                <h3 className="font-display font-semibold text-[18px] text-white tracking-tight mb-1">
+                <h3 className="font-display font-semibold text-[18px] text-[#f4f6f2] tracking-tight mb-1">
                   {env.name}
                 </h3>
-                <p className="font-mono text-[10.5px] text-[#64748b] mb-2">{env.family}</p>
-                <p className="text-[12.5px] text-[#94a3b8] leading-relaxed">
+                <p className="font-mono text-[10.5px] text-[#7a847d] mb-2">{env.family}</p>
+                <p className="font-mono text-[12.5px] text-[#a0aaa1] leading-relaxed">
                   {env.desc}
                 </p>
               </div>
@@ -145,22 +145,22 @@ export default function DesktopEnvironments() {
         <div className="p-7 md:p-9">
           <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
             <div className="flex-1">
-              <h3 className="font-display font-semibold text-[21px] text-white tracking-tight mb-3">
+              <h3 className="font-display font-semibold text-[21px] text-[#f4f6f2] tracking-tight mb-3">
                 {selected.name} selected
               </h3>
-              <p className="text-[14.5px] text-[#a5b4c8] leading-relaxed max-w-[56ch]">
+              <p className="font-mono text-[14px] text-[#a0aaa1] leading-relaxed max-w-[58ch]">
                 Make sure your machine is connected to the internet during
                 installation — we&apos;ll download the packages for{" "}
-                <span className="text-[#22d3ee] font-medium">{selected.name}</span>{" "}
+                <span className="text-[#b8f36b] font-semibold">{selected.name}</span>{" "}
                 and install everything automatically.
               </p>
             </div>
             <div className="terminal shrink-0 md:w-[300px]">
               <div className="terminal-body !py-4 !px-5 text-[12px] leading-[1.9]">
-                <p className="text-[#64748b] mb-1">
-                  <span className="text-[#22d3ee]">#</span> apt install
+                <p className="text-[#7a847d] mb-1">
+                  <span className="text-[#4ade80]">#</span> apt install
                 </p>
-                <p className="text-[#94a3b8] break-words">
+                <p className="text-[#a0aaa1] break-words">
                   {selected.packages.join(" \\\n  ")}
                 </p>
               </div>
@@ -182,8 +182,8 @@ export default function DesktopEnvironments() {
                 onClick={() => setSelected(env)}
                 className={`chip !text-[12px] !px-4 !py-2 cursor-pointer transition-colors ${
                   active
-                    ? "!text-[#22d3ee] !border-[#22d3ee]/50 bg-[#22d3ee]/5"
-                    : "hover:!border-[#475569] hover:!text-white"
+                    ? "!text-[#b8f36b] !border-[#b8f36b]/50 bg-[#b8f36b]/5"
+                    : "hover:!border-[#3a453c] hover:!text-[#f4f6f2]"
                 }`}
               >
                 {env.name}

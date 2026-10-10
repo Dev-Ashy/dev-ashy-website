@@ -57,14 +57,29 @@ export default function OSPage() {
     <main className="min-h-screen">
       <Header />
 
+      {/* System status strip */}
+      <div className="border-b border-[#222923] bg-[#0f110f]">
+        <div className="mx-auto max-w-[1240px] px-5 py-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[11px] text-[#a0aaa1]">
+          <span className="text-[#b8f36b]">OS.ISO // v2026.04</span>
+          <span className="hidden sm:inline text-[#7a847d]">|</span>
+          <span className="hidden sm:inline">BASE: UBUNTU · DEBIAN</span>
+          <span className="hidden lg:inline text-[#7a847d]">|</span>
+          <span className="hidden lg:inline flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-[#4ade80] status-pulse" />
+            KERNEL 6.8 · STABLE
+          </span>
+          <span className="ml-auto text-[#7a847d]">LOC: LAGOS_NODE_01</span>
+        </div>
+      </div>
+
       {/* Hero */}
-      <section className="pt-36 pb-20 border-b border-[#1e293b]">
+      <section className="pt-28 pb-20 border-b border-[#222923]">
         <div className="container">
           <p className="eyebrow-mono mb-5">dev-ashy os · flagship</p>
-          <h1 className="font-display font-bold tracking-tight text-white text-[clamp(3rem,9vw,7rem)] leading-[0.98] mb-7">
+          <h1 className="font-display font-bold tracking-tight text-[#f4f6f2] text-[clamp(3rem,9vw,7rem)] leading-[0.98] mb-7">
             Dev-Ashy OS
           </h1>
-          <p className="text-[#a5b4c8] text-lg max-w-[52ch] leading-relaxed mb-10">
+          <p className="font-mono text-[#a0aaa1] text-[16px] max-w-[52ch] leading-relaxed mb-10">
             Your developer workstation, rebuilt. A Linux distribution for people
             who build — your desktop, your environment, your choice.
           </p>
@@ -96,10 +111,10 @@ export default function OSPage() {
               { value: "4 GB", label: "usb" },
             ].map((req) => (
               <div key={req.label} className="panel panel-hover p-5">
-                <p className="font-display font-bold text-[24px] text-white tracking-tight">
+                <p className="font-display font-bold text-[24px] text-[#f4f6f2] tracking-tight">
                   {req.value}
                 </p>
-                <p className="font-mono text-[11px] text-[#64748b] mt-1">{req.label}</p>
+                <p className="font-mono text-[11px] text-[#7a847d] mt-1">{req.label}</p>
               </div>
             ))}
           </div>
@@ -112,13 +127,13 @@ export default function OSPage() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
             <div>
               <p className="eyebrow-mono mb-4">pick your desktop</p>
-              <h2 className="font-display font-bold tracking-tight text-white text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05]">
+              <h2 className="font-display font-bold tracking-tight text-[#f4f6f2] text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05]">
                 Choose your environment
                 <br />
                 at install.
               </h2>
             </div>
-            <p className="text-[#94a3b8] max-w-[46ch] text-[15px] leading-relaxed">
+            <p className="font-mono text-[#a0aaa1] max-w-[46ch] text-[14px] leading-relaxed">
               Select a desktop environment below to see what gets installed.
               Your machine will need an internet connection during installation
               so the right packages can be downloaded.
@@ -130,10 +145,10 @@ export default function OSPage() {
       </section>
 
       {/* What's inside */}
-      <section className="section-padding bg-[#0d0d14]">
+      <section className="section-padding bg-[#0f110f]">
         <div className="container">
           <p className="eyebrow-mono mb-4">everything you need, pre-installed</p>
-          <h2 className="font-display font-bold tracking-tight text-white text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] mb-14">
+          <h2 className="font-display font-bold tracking-tight text-[#f4f6f2] text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] mb-14">
             Ship day one.
           </h2>
 
@@ -144,10 +159,10 @@ export default function OSPage() {
                   <span className="win-dot" />
                   {feature.id}
                 </div>
-                <h3 className="font-display font-semibold text-[18px] text-white tracking-tight mb-2">
+                <h3 className="font-display font-semibold text-[18px] text-[#f4f6f2] tracking-tight mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-[13px] text-[#94a3b8] leading-relaxed">
+                <p className="font-mono text-[13px] text-[#a0aaa1] leading-relaxed">
                   {feature.desc}
                 </p>
               </div>
@@ -160,15 +175,15 @@ export default function OSPage() {
               flash the iso
             </div>
             <div className="p-7 md:p-9 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
-              <p className="text-[14.5px] text-[#a5b4c8] leading-relaxed flex-1">
+              <p className="font-mono text-[14px] text-[#a0aaa1] leading-relaxed flex-1">
                 Download the latest image, write it to a USB drive, and boot.
                 The installer walks you through disk setup, desktop selection,
                 and Dev-Ashy branding.
               </p>
               <div className="terminal shrink-0 md:w-[380px]">
                 <div className="terminal-body !py-4 text-[12px] leading-[1.9]">
-                  <p className="text-[#64748b]">
-                    <span className="text-[#22d3ee]">$</span> sudo dd if=Dev-Ashy-OS-0.1.0-amd64.iso of=/dev/sdX bs=4M
+                  <p className="text-[#a0aaa1]">
+                    <span className="text-[#4ade80]">$</span> sudo dd if=Dev-Ashy-OS-0.1.0-amd64.iso of=/dev/sdX bs=4M
                   </p>
                 </div>
               </div>
