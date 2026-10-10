@@ -1,29 +1,29 @@
 @import "tailwindcss";
 
 /*
- * Dev-Ashy Limited · Design Kernel
- * Technical Brutalism × Precision Engineering
- *   - absolute 90-degree corners (0px radius)
- *   - deep charcoal surfaces layered by 1px hairline borders (no shadows)
- *   - acid electric green (#B8F36B) reserved for high-priority interactive cues
- *   - Space Grotesk for editorial hierarchy, JetBrains Mono for everything else
+ * Dev-Ashy Limited · Design Kernel (Modern Clean Dark)
+ * Linear / Vercel / Raycast-inspired surfaces with disciplined green accent
+ *   - soft near-black base, elevated card surfaces
+ *   - refined 12px corners, hairline borders, subtle hover elevation
+ *   - acid electric green (#B8F36B) used sparingly for high-priority cues
+ *   - Space Grotesk for display, JetBrains Mono for UI/data
  */
 :root {
-  --background: #0b0d0c; /* tier 0 · workspace root */
-  --background-alt: #0f110f; /* alternating section seams */
-  --surface: #121613; /* tier 1 · tiling frames & panes */
-  --surface-2: #171c18; /* tier 2 · interactive modules & toolbars */
-  --surface-3: #1e241f; /* tier 3 · overlays & command buffers */
+  --background: #09090b; /* tier 0 · soft near-black */
+  --background-alt: #0c0c0e; /* alternating section seams */
+  --surface: #161618; /* tier 1 · elevated card surface */
+  --surface-2: #1c1c1f; /* tier 2 · interactive modules & toolbars */
+  --surface-3: #202023; /* tier 3 · overlays & command buffers */
   --primary: #b8f36b; /* acid electric green */
-  --primary-hover: #c7f688;
+  --primary-hover: #bef264;
   --secondary: #4ade80;
   --tertiary: #22c55e;
-  --text: #f4f6f2;
-  --text-muted: #a0aaa1;
-  --text-faint: #7a847d;
-  --border: #222923;
-  --border-strong: #2a332c;
-  --terminal-bg: #090b0a;
+  --text: #fafafa;
+  --text-muted: #a1a1aa;
+  --text-faint: #71717a;
+  --border: #27272a;
+  --border-strong: #3f3f46;
+  --terminal-bg: #0b0b0e;
   --status-alpha: #f59e0b;
   --status-beta: #38bdf8;
   --status-shipping: #b8f36b;
@@ -115,8 +115,8 @@ body {
   }
 
   .section-padding {
-    padding-top: 112px;
-    padding-bottom: 112px;
+    padding-top: 96px;
+    padding-bottom: 96px;
     border-top: 1px solid var(--border);
   }
 
@@ -124,13 +124,16 @@ body {
   .panel {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 0;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
+    border-radius: 12px;
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    will-change: transform;
   }
 
   .panel-hover:hover {
     border-color: var(--border-strong);
     background: var(--surface-2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.45);
   }
 
   .panel-active {
@@ -173,7 +176,7 @@ body {
     background: var(--primary);
     color: var(--background);
     padding: 13px 26px;
-    border-radius: 0;
+    border-radius: 12px;
     font-family: var(--font-mono);
     font-weight: 700;
     font-size: 13.5px;
@@ -181,12 +184,13 @@ body {
     line-height: 1.2;
     border: 1px solid var(--primary);
     cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
   }
 
   .btn-primary:hover {
     background: var(--primary-hover);
     border-color: var(--primary-hover);
+    transform: translateY(-1px);
   }
 
   .btn-hero {
@@ -202,27 +206,28 @@ body {
     background: transparent;
     color: var(--text);
     padding: 13px 26px;
-    border-radius: 0;
+    border-radius: 12px;
     font-family: var(--font-mono);
     font-weight: 600;
     font-size: 13.5px;
     line-height: 1.2;
     border: 1px solid var(--border-strong);
     cursor: pointer;
-    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
   }
 
   .btn-secondary:hover {
     border-color: var(--primary);
     color: var(--text);
     background: var(--surface-2);
+    transform: translateY(-1px);
   }
 
   /* ---- Terminal ---- */
   .terminal {
     background: var(--terminal-bg);
     border: 1px solid var(--border);
-    border-radius: 0;
+    border-radius: 12px;
     font-family: var(--font-mono);
     font-size: 13px;
     line-height: 1.75;
@@ -238,9 +243,9 @@ body {
     display: inline-flex;
     align-items: center;
     height: 22px;
-    padding: 0 8px;
+    padding: 0 10px;
     border: 1px solid;
-    border-radius: 0;
+    border-radius: 999px;
     font-family: var(--font-mono);
     font-size: 10px;
     font-weight: 600;
@@ -281,7 +286,7 @@ body {
     gap: 6px;
     padding: 4px 10px;
     border: 1px solid var(--border);
-    border-radius: 0;
+    border-radius: 999px;
     font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.04em;
@@ -310,9 +315,9 @@ body {
 
   .eyebrow-mono {
     font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--text-faint);
   }
 
   /* ---- Telemetry strip mono caption ---- */
